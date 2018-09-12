@@ -32,16 +32,6 @@
 
 </form>
 
-<!-- views/reviews-new.handlebars -->
-
-<form method="POST" action="/reviews">
-  <fieldset>
-    <legend>New Review</legend>
-    <!-- TITLE -->
-    <p>
-      <label for="review-title">Title</label><br>
-      <input id="review-title" type="text" name="title" />
-    </p>
 
     <!-- MOVIE TITLE -->
     <p>
@@ -62,3 +52,30 @@
   </p>
 
 </form>
+
+<!-- views/reviews-index.handlebars -->
+
+<h1>Reviews</h1>
+
+<a href="/reviews/new">New Review</a>
+
+{{#each reviews}}
+  <h2><a href="/reviews/{{this._id}}">{{this.title}}</a></h2>
+  <small>{{this.movieTitle}}</small>
+{{/each}}
+
+<h1>{{review.title}}</h1>
+<h2>{{review.movieTitle}}</h2>
+<p>{{review.description}}</p>
+
+<a href="/">Back to Home</a>
+
+<h1>{{review.title}}</h1>
+<h5>{{review.movieTitle}}</h5>
+<p>{{review.description}}</p>
+
+<h1>{{review.title}}</h1>
+<h2>{{review.movieTitle}}</h2>
+<p>{{review.description}}</p>
+
+<p><a href="/reviews/{{review._id}}/edit">Edit</a></p>
