@@ -33,3 +33,46 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
   console.log('App listening on port 3000!')
 })
+
+// app.js
+
+// INDEX
+app.get('/', (req, res) => {
+  res.render('reviews-index', { reviews: reviews });
+})
+
+// app.js
+
+...
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/rotten-potatoes', { useMongoClient: true });
+
+...
+
+// app.js
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/rotten-potatoes', { useMongoClient: true });
+
+const Review = mongoose.model('Review', {
+  title: String
+});
+
+// app.js
+
+// var reviews = [
+//   { title: "Great Review" },
+//   { title: "Next Review" }
+// ]
+
+// INDEX
+app.get('/', (req, res) => {
+  Review.find()
+    .then(reviews => {
+      res.render('reviews-index', { reviews: reviews });
+    })
+    .catch(err => {
+      console.log(err);
+    })
+})
