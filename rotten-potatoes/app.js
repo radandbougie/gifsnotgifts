@@ -185,3 +185,8 @@ app.delete('/reviews/:id', function (req, res) {
     console.log(err.message);
   })
 })
+
+
+// app.js
+
+const reviews = require('./reviews');
